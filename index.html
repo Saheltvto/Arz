@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ساحل | نرخ‌یاب کالا</title>
+<meta name="theme-color" content="#0d1117">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ساحل">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+<style>
+html,body{margin:0;height:100%;background:#0d1117;font-family:Tahoma,sans-serif;color:#eef2f8}
+iframe{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0);bottom:env(safe-area-inset-bottom,0);width:100%;height:calc(100% - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));border:0;background:#0d1117}
+#splash{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:#0d1117;z-index:2;text-align:center;padding:20px;transition:opacity .3s}
+#splash.off{opacity:0;pointer-events:none}
+#splash img{width:84px;height:84px;object-fit:contain;border-radius:20px}
+.sp{width:26px;height:26px;border:3px solid #232c3b;border-top-color:#4cc9a7;border-radius:50%;animation:r 1s linear infinite}
+@keyframes r{to{transform:rotate(360deg)}}
+#msg{color:#8995ab;font-size:.9rem;min-height:1.4em}
+#msg a{color:#4cc9a7}
+@media (prefers-reduced-motion:reduce){.sp{animation:none}}
+</style>
+</head>
+<body>
+<div id="splash"><img src="icons/icon-192.png" alt="ساحل" onerror="this.style.display='none'"><div class="sp"></div><div id="msg"></div></div>
+<iframe id="app" title="ساحل | نرخ‌یاب کالا" allow="clipboard-write" referrerpolicy="no-referrer"></iframe>
+<script>
+// ← آدرس Web app (که به /exec ختم می‌شود) را اینجا بگذارید
+const APP_URL='PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE';
+const f=document.getElementById('app'),sp=document.getElementById('splash'),msg=document.getElementById('msg');
+function slow(){msg.innerHTML=navigator.onLine?'بارگذاری طول کشید. <a href="'+APP_URL+'">باز کردن مستقیم</a>':'اینترنت قطع است؛ پس از اتصال دوباره باز کنید.'}
+f.onload=()=>{clearTimeout(t);sp.classList.add('off')};
+const t=setTimeout(slow,10000);
+f.src=APP_URL;
+addEventListener('offline',slow);
+addEventListener('online',()=>{msg.textContent='';if(!sp.classList.contains('off'))f.src=APP_URL});
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script>
+</body>
+</html>
