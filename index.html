@@ -30,7 +30,7 @@ iframe{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0);bottom:env(s
 <iframe id="app" title="ساحل | نرخ‌یاب کالا" allow="clipboard-write" referrerpolicy="no-referrer"></iframe>
 <script>
 // ← آدرس Web app (که به /exec ختم می‌شود) را اینجا بگذارید
-const APP_URL='PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE';
+const APP_URL='https://script.google.com/macros/s/AKfycbx-wQmMCw0HXRXZzu2qf4t4EfE6Ls3SaBtS2LkE--dDOqSwmSmXuVEI9Kfh1P9q_mSF/exec';
 const f=document.getElementById('app'),sp=document.getElementById('splash'),msg=document.getElementById('msg');
 function slow(){msg.innerHTML=navigator.onLine?'بارگذاری طول کشید. <a href="'+APP_URL+'">باز کردن مستقیم</a>':'اینترنت قطع است؛ پس از اتصال دوباره باز کنید.'}
 f.onload=()=>{clearTimeout(t);sp.classList.add('off')};
